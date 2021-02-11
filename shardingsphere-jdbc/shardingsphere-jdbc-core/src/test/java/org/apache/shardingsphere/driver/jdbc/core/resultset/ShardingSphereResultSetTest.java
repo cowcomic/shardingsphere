@@ -20,12 +20,12 @@ package org.apache.shardingsphere.driver.jdbc.core.resultset;
 import org.apache.shardingsphere.driver.jdbc.core.connection.ShardingSphereConnection;
 import org.apache.shardingsphere.driver.jdbc.core.statement.ShardingSphereStatement;
 import org.apache.shardingsphere.infra.config.properties.ConfigurationProperties;
+import org.apache.shardingsphere.infra.context.metadata.MetaDataContexts;
+import org.apache.shardingsphere.infra.context.metadata.impl.StandardMetaDataContexts;
 import org.apache.shardingsphere.infra.executor.sql.context.ExecutionContext;
 import org.apache.shardingsphere.infra.merge.result.MergedResult;
-import org.apache.shardingsphere.kernel.context.SchemaContexts;
-import org.apache.shardingsphere.kernel.context.StandardSchemaContexts;
-import org.apache.shardingsphere.sql.parser.binder.segment.table.TablesContext;
-import org.apache.shardingsphere.sql.parser.binder.statement.SQLStatementContext;
+import org.apache.shardingsphere.infra.binder.segment.table.TablesContext;
+import org.apache.shardingsphere.infra.binder.statement.SQLStatementContext;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -92,9 +92,9 @@ public final class ShardingSphereResultSetTest {
     
     private ShardingSphereStatement getShardingSphereStatement() {
         ShardingSphereConnection connection = mock(ShardingSphereConnection.class);
-        SchemaContexts schemaContexts = mock(StandardSchemaContexts.class);
-        when(schemaContexts.getProps()).thenReturn(new ConfigurationProperties(new Properties()));
-        when(connection.getSchemaContexts()).thenReturn(schemaContexts);
+        MetaDataContexts metaDataContexts = mock(StandardMetaDataContexts.class);
+        when(metaDataContexts.getProps()).thenReturn(new ConfigurationProperties(new Properties()));
+        when(connection.getMetaDataContexts()).thenReturn(metaDataContexts);
         ShardingSphereStatement result = mock(ShardingSphereStatement.class);
         when(result.getConnection()).thenReturn(connection);
         return result;
@@ -173,26 +173,26 @@ public final class ShardingSphereResultSetTest {
     
     @Test
     public void assertGetFloatWithColumnIndex() throws SQLException {
-        when(mergeResultSet.getValue(1, float.class)).thenReturn(1F);
-        assertThat(shardingSphereResultSet.getFloat(1), is(1F));
+        when(mergeResultSet.getValue(1, float.class)).thenReturn(1.0F);
+        assertThat(shardingSphereResultSet.getFloat(1), is(1.0F));
     }
     
     @Test
     public void assertGetFloatWithColumnLabel() throws SQLException {
-        when(mergeResultSet.getValue(1, float.class)).thenReturn(1F);
-        assertThat(shardingSphereResultSet.getFloat("label"), is(1F));
+        when(mergeResultSet.getValue(1, float.class)).thenReturn(1.0F);
+        assertThat(shardingSphereResultSet.getFloat("label"), is(1.0F));
     }
     
     @Test
     public void assertGetDoubleWithColumnIndex() throws SQLException {
-        when(mergeResultSet.getValue(1, double.class)).thenReturn(1D);
-        assertThat(shardingSphereResultSet.getDouble(1), is(1D));
+        when(mergeResultSet.getValue(1, double.class)).thenReturn(1.0D);
+        assertThat(shardingSphereResultSet.getDouble(1), is(1.0D));
     }
     
     @Test
     public void assertGetDoubleWithColumnLabel() throws SQLException {
-        when(mergeResultSet.getValue(1, double.class)).thenReturn(1D);
-        assertThat(shardingSphereResultSet.getDouble("label"), is(1D));
+        when(mergeResultSet.getValue(1, double.class)).thenReturn(1.0D);
+        assertThat(shardingSphereResultSet.getDouble("label"), is(1.0D));
     }
     
     @Test

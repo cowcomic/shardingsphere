@@ -21,6 +21,7 @@ import com.google.common.base.Strings;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import org.apache.shardingsphere.infra.yaml.config.YamlConfiguration;
+import org.apache.shardingsphere.infra.yaml.engine.constructor.ShardingSphereFilterYamlConstructor;
 import org.apache.shardingsphere.infra.yaml.engine.constructor.ShardingSphereYamlConstructor;
 import org.apache.shardingsphere.infra.yaml.engine.representer.ShardingSphereYamlRepresenter;
 import org.yaml.snakeyaml.Yaml;
@@ -31,10 +32,10 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.Properties;
 
 /**
  * YAML engine.
@@ -54,7 +55,7 @@ public final class YamlEngine {
     public static <T extends YamlConfiguration> T unmarshal(final File yamlFile, final Class<T> classType) throws IOException {
         try (
                 FileInputStream fileInputStream = new FileInputStream(yamlFile);
-                InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream, StandardCharsets.UTF_8)
+                InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream)
         ) {
             return new Yaml(new ShardingSphereYamlConstructor(classType)).loadAs(inputStreamReader, classType);
         }
@@ -88,23 +89,39 @@ public final class YamlEngine {
     }
     
     /**
-     * Unmarshal YAML.
+     * Secure unmarshal YAML.
      *
      * @param yamlContent YAML content
-     * @return map from YAML
+     * @param classType class type
+     * @param acceptedClasses accepted classes
+     * @param <T> type of class
+     * @return object from YAML
      */
-    public static Map<?, ?> unmarshal(final String yamlContent) {
-        return Strings.isNullOrEmpty(yamlContent) ? new LinkedHashMap<>() : (Map) new Yaml().load(yamlContent);
+    public static <T> T secureUnmarshal(final String yamlContent, final Class<T> classType, final Collection<Class<?>> acceptedClasses) {
+        return new Yaml(new ShardingSphereFilterYamlConstructor(classType, acceptedClasses)).loadAs(yamlContent, classType);
     }
     
     /**
-     * Unmarshal properties YAML.
+     * Secure unmarshal YAML.
      *
      * @param yamlContent YAML content
-     * @return properties from YAML
+     * @param acceptedClasses accepted classes
+     * @return map from YAML
      */
-    public static Properties unmarshalProperties(final String yamlContent) {
-        return Strings.isNullOrEmpty(yamlContent) ? new Properties() : new Yaml().loadAs(yamlContent, Properties.class);
+    public static Map<?, ?> secureUnmarshal(final String yamlContent, final Collection<Class<?>> acceptedClasses) {
+        return Strings.isNullOrEmpty(yamlContent) ? new LinkedHashMap<>() : (Map) new Yaml(new ShardingSphereFilterYamlConstructor(acceptedClasses)).load(yamlContent);
+    }
+    
+    /**
+     * Secure unmarshal YAML.
+     *
+     * @param yamlContent YAML content
+     * @param acceptedClass accepted class
+     * @param <T> type of class
+     * @return object from YAML
+     */
+    public static <T> T secureUnmarshal(final String yamlContent, final Class<T> acceptedClass) {
+        return new Yaml(new ShardingSphereFilterYamlConstructor(acceptedClass, Collections.singletonList(acceptedClass))).loadAs(yamlContent, acceptedClass);
     }
     
     /**

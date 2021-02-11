@@ -13,7 +13,7 @@ chapter = true
 
 ## 谁在使用 ShardingSphere?
 
-共计 140 家公司。
+共计 156 家公司。
 
 ### 金融行业
 <ul>
@@ -23,7 +23,8 @@ chapter = true
     <li><a href="https://www.msxf.com/" rel="nofollow">马上金融</a></li>
     <li><a href="https://jf.10086.cn/" rel="nofollow">中移动金融科技</a></li>
     <li><a href="https://www.9fgroup.com/" rel="nofollow">玖富数科</a></li>
-    <li><a href="https://www.haiercash.com/" rel="nofollow">海尔消费金融</a></li>        <li><a href="https://www.xiaoniu88.com/" rel="nofollow">小牛在线</a></li>
+    <li><a href="https://www.haiercash.com/" rel="nofollow">海尔消费金融</a></li>        
+    <li><a href="https://www.xiaoniu88.com/" rel="nofollow">小牛在线</a></li>
     <li><a href="https://www.huaxiafinance.com/" rel="nofollow">华夏信财</a></li>
     <li><a href="https://www.niiwoo.com/" rel="nofollow">你我金融</a></li>
     <li><a href="https://www.51credit.com/" rel="nofollow">我爱卡</a></li>
@@ -34,6 +35,8 @@ chapter = true
     <li><a href="https://www.kjtpay.com/" rel="nofollow">快捷通支付服务有限公司</a></li>
     <li><a href="https://www.ktjr.com/" rel="nofollow">开通金融</a></li>
     <li><a href="https://www.tansun.com/" rel="nofollow">天阳宏业</a></li>
+    <li><a href="https://www.360jinrong.net/" rel="nofollow">360数科</a></li>
+    <li><a href="https://www.ccbft.com/" rel="nofollow">建信金融科技</a></li>
 </ul>
 
 ### 电子商务
@@ -57,6 +60,7 @@ chapter = true
     <li><a href="https://www.miaomaifang.com/" rel="nofollow">秒卖房</a></li>
     <li><a href="https://TonySourcing.com/" rel="nofollow">TonySourcing</a></li>
     <li><a href="https://zowiesunglasses.com/" rel="nofollow">卓唯眼镜</a></li>
+    <li><a href="https://m.51tiangou.com/">大商天狗电子商务有限责任公司</a></li>
 </ul>
 
 ### 数字化与云服务
@@ -72,6 +76,10 @@ chapter = true
     <li><a href="https://www.shebaotong.com/" rel="nofollow">上海社宝信息科技有限公司</a></li>
     <li><a href="https://www.itrus.com.cn/" rel="nofollow">天威诚信</a></li>
     <li><a href="http://www.dtchuxing.com/" rel="nofollow">公交云</a></li>
+    <li><a href="http://www.ushareit.com/" rel="nofollow">茄子快传</a></li>
+    <li><a href="https://www.xforceplus.com/" rel="nofollow">上海云砺信息科技有限公司</a></li>
+    <li><a href="https://aifanfan.baidu.com/" rel="nofollow">百度爱番番</a></li>
+    <li><a href="http://www.meicloud.com/" rel="nofollow">美云智数</a></li>
 </ul>
 
 ### 出行
@@ -96,10 +104,13 @@ chapter = true
 ### 物流
 <ul>
     <li><a href="https://www.zto.com/" rel="nofollow">中通快递</a></li>
+    <li><a href="http://www.yundaex.com/cn/index.php" rel="nofollow">韵达科技</a></li>
     <li><a href="http://www.yl-scm.com/" rel="nofollow">云路供应链</a></li>
     <li><a href="https://www.newbeescm.com/" rel="nofollow">蜂网</a></li>
     <li><a href="https://www.dianwoda.com/" rel="nofollow">点我达</a></li>   
     <li><a href="https://www.keking.com" rel="nofollow">凯京科技</a></li>
+    <li><a href="https://www.jdl.cn/" rel="nofollow">京东物流</a></li>
+    <li><a href="http://www.xbnwl.com/" rel="nofollow">广东喜百年供应链科技有限公司</a></li>
 </ul>
 
 ### 旅游服务
@@ -135,6 +146,7 @@ chapter = true
     <li><a href="http://www.yaduo.com/" rel="nofollow">亚朵</a></li>
     <li><a href="http://read.zhulang.com/" rel="nofollow">连尚文学</a></li>
     <li><a href="https://www.yy.com/" rel="nofollow">欢聚时代(YY)</a></li>
+    <li><a href="https://y.tencentmusic.com" rel="nofollow">腾讯音乐娱乐科技有限公司</a></li>
 </ul>
 
 ### 新闻资讯
@@ -159,6 +171,7 @@ chapter = true
     <li><a href="http://dnr.gxzf.gov.cn/" rel="nofollow">广西壮族自治区自然资源信息中心</a></li>
     <li><a href="http://www.ascf.com.cn/" rel="nofollow">航天长峰</a></li>
     <li><a href="http://www.chiscdc.com/" rel="nofollow">中卫信</a></li>
+    <li><a href="http://www.taxchina.com/" rel="nofollow">中税网</a></li>
 </ul>
 
 ### 通信科技
@@ -174,6 +187,7 @@ chapter = true
     <li><a href="https://www.hikvision.com/" rel="nofollow">海康威视</a></li>
     <li><a href="http://www.jtkjbike.com/" rel="nofollow">金通科技集团</a></li>
     <li><a href="http://www.iotlead.com/" rel="nofollow">广州理德物联网科技有限公司</a></li>
+     <li><a href=" http://tcslwxwl.cn.b2b168.com/" rel="nofollow">神州商龙科技股份有限公司 </a></li>
 </ul>
 
 ### 软件开发及服务
@@ -204,14 +218,18 @@ chapter = true
     <li><a href="https://www.idengyun.com/" rel="nofollow">登云</a></li>
     <li><a href="http://www.aicmonitor.com/" rel="nofollow">航天智控</a></li>
     <li><a href="http://www.dzzd.com" rel="nofollow">玺信阳光</a></li>
+    <li><a href="https://www.garfiel-tech.com/" rel="nofollow">北京加菲猫科技有限公司</a></li>
 </ul>
 
-### 医疗健康
+### 医疗与健康
 <ul>
     <li><a href="https://www.myweimai.com/" rel="nofollow">微脉</a></li>
     <li><a href="http://www.gaojihealth.com/" rel="nofollow">高济医疗</a></li>
     <li><a href="https://www.zyhealth.com/" rel="nofollow">智云健康</a></li>
     <li><a href="https://www.ddky.com/" rel="nofollow">叮当快药</a></li>
+    <li><a href="https://www.keep.com/">Keep</a></li>
+    <li><a href="http://www.dxy.cn/">丁香园</a></li>
+    <li><a href="https://www.mytijian.com">杭州每天健康科技有限公司</a></li>
 </ul>
 
 <img src="https://shardingsphere.apache.org/community/image/powered-by.png" width = "30%" height = "30%" align="right" alt="Powered By ShardingSphere" />

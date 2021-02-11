@@ -17,12 +17,14 @@
 
 package org.apache.shardingsphere.scaling.core.spi;
 
-import org.apache.shardingsphere.scaling.core.job.preparer.checker.DataSourceChecker;
-import org.apache.shardingsphere.scaling.core.execute.executor.dumper.JDBCDumper;
-import org.apache.shardingsphere.scaling.core.job.position.PositionManager;
-import org.apache.shardingsphere.scaling.core.execute.executor.dumper.LogDumper;
-import org.apache.shardingsphere.scaling.core.execute.executor.importer.Importer;
 import org.apache.shardingsphere.infra.database.type.DatabaseTypeAwareSPI;
+import org.apache.shardingsphere.scaling.core.common.sqlbuilder.ScalingSQLBuilder;
+import org.apache.shardingsphere.scaling.core.executor.dumper.JDBCDumper;
+import org.apache.shardingsphere.scaling.core.executor.dumper.LogDumper;
+import org.apache.shardingsphere.scaling.core.executor.importer.Importer;
+import org.apache.shardingsphere.scaling.core.job.check.DataConsistencyChecker;
+import org.apache.shardingsphere.scaling.core.job.position.PositionInitializer;
+import org.apache.shardingsphere.scaling.core.job.preparer.checker.DataSourceChecker;
 
 /**
  * Scaling entry.
@@ -42,13 +44,13 @@ public interface ScalingEntry extends DatabaseTypeAwareSPI {
      * @return log dumper type
      */
     Class<? extends LogDumper> getLogDumperClass();
-
+    
     /**
-     * Get position manager type.
+     * Get position initializer type.
      *
-     * @return position manager type
+     * @return position initializer type
      */
-    Class<? extends PositionManager> getPositionManager();
+    Class<? extends PositionInitializer> getPositionInitializer();
     
     /**
      * Get importer type.
@@ -56,10 +58,25 @@ public interface ScalingEntry extends DatabaseTypeAwareSPI {
      * @return importer type
      */
     Class<? extends Importer> getImporterClass();
-
+    
     /**
-     * Get checker type.
-     * @return checker type
+     * Get data source checker.
+     *
+     * @return data source checker type
      */
-    Class<? extends DataSourceChecker> getCheckerClass();
+    Class<? extends DataSourceChecker> getDataSourceCheckerClass();
+    
+    /**
+     * Get data consistency checker.
+     *
+     * @return data consistency checker type
+     */
+    Class<? extends DataConsistencyChecker> getDataConsistencyCheckerClass();
+    
+    /**
+     * Get SQL builder class.
+     *
+     * @return SQL builder type
+     */
+    Class<? extends ScalingSQLBuilder> getSQLBuilderClass();
 }

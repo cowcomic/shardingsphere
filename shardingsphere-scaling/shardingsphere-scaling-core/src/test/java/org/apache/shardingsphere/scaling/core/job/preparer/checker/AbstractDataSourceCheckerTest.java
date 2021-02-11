@@ -17,7 +17,8 @@
 
 package org.apache.shardingsphere.scaling.core.job.preparer.checker;
 
-import org.apache.shardingsphere.scaling.core.exception.PrepareFailedException;
+import org.apache.shardingsphere.scaling.core.common.exception.PrepareFailedException;
+import org.apache.shardingsphere.scaling.core.common.sqlbuilder.ScalingSQLBuilder;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,52 +28,56 @@ import org.mockito.junit.MockitoJUnitRunner;
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Collection;
+import java.util.LinkedList;
 
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public final class AbstractDataSourceCheckerTest {
-
+    
     @Mock
     private DataSource dataSource;
-
+    
     @Mock
     private Connection connection;
-
+    
     private AbstractDataSourceChecker dataSourceChecker;
-
+    
     private Collection<DataSource> dataSources;
-
+    
     @Before
     public void setUp() {
         dataSourceChecker = new AbstractDataSourceChecker() {
+            
             @Override
             public void checkPrivilege(final Collection<? extends DataSource> dataSources) {
-
             }
-    
+            
             @Override
             public void checkVariable(final Collection<? extends DataSource> dataSources) {
-        
+            }
+            
+            @Override
+            protected ScalingSQLBuilder getSqlBuilder() {
+                return null;
             }
         };
-        dataSources = new ArrayList<>();
+        dataSources = new LinkedList<>();
         dataSources.add(dataSource);
     }
-
+    
     @Test
     public void assertCheckConnection() throws SQLException {
         when(dataSource.getConnection()).thenReturn(connection);
         dataSourceChecker.checkConnection(dataSources);
         verify(dataSource).getConnection();
     }
-
+    
     @Test(expected = PrepareFailedException.class)
     public void assertCheckConnectionFailed() throws SQLException {
-        when(dataSource.getConnection()).thenThrow(new SQLException());
+        when(dataSource.getConnection()).thenThrow(new SQLException("error"));
         dataSourceChecker.checkConnection(dataSources);
     }
 }

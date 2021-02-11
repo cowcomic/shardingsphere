@@ -26,23 +26,31 @@ import java.util.Collection;
 public interface DataSourceChecker {
     
     /**
-     * Check datasource connections.
+     * Check data source connections.
      *
-     * @param dataSources datasource connections
+     * @param dataSources data sources
      */
     void checkConnection(Collection<? extends DataSource> dataSources);
     
     /**
      * Check user privileges.
      *
-     * @param dataSources datasource connections
+     * @param dataSources data sources
      */
     void checkPrivilege(Collection<? extends DataSource> dataSources);
     
     /**
-     * Check datasource variables.
+     * Check data source variables.
      *
-     * @param dataSources datasource connections
+     * @param dataSources data sources
      */
     void checkVariable(Collection<? extends DataSource> dataSources);
+    
+    /**
+     * Check table is empty.
+     *
+     * @param dataSources data sources
+     * @param tableNames table names
+     */
+    void checkTargetTable(Collection<? extends DataSource> dataSources, Collection<String> tableNames);
 }
