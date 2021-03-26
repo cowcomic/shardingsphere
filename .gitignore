@@ -35,3 +35,8 @@ logs/
 # system ignore
 .DS_Store
 Thumbs.db
+
+
+# vscode
+.factorypath
+.history/
