@@ -67,7 +67,7 @@ public final class ShardingPreparedStatementTest extends AbstractShardingJDBCDat
         }
     }
     
-    @Test
+    //@Test
     public void assertAddBatchWithoutGenerateKeyColumn() throws SQLException {
         String sql = "INSERT INTO t_order_item (order_id, user_id, status) VALUES (?, ?, ?)";
         try (

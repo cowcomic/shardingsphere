@@ -40,7 +40,7 @@
         
         <module>sharding-jdbc</module>
         <module>sharding-proxy</module>
-        <module>sharding-ui</module>
+        <!--module>sharding-ui</module-->
         
         <module>sharding-transaction</module>
         <module>sharding-orchestration</module> 
@@ -796,6 +796,10 @@
                         <exclude>/node_modules/**</exclude>
                         <exclude>/test/coverage/**</exclude>
                         <exclude>**/package-lock.json</exclude>
+
+                        <!-- vs code -->
+                        <exclude>**/.factorypath</exclude>
+                        <exclude>**/.history/**</exclude>
                     </excludes>
                 </configuration>
                 <executions>
