@@ -21,13 +21,15 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.SneakyThrows;
 import org.antlr.v4.runtime.CharStream;
-import org.antlr.v4.runtime.CharStreams;
+import org.antlr.v4.runtime.CodePointBuffer;
+import org.antlr.v4.runtime.CodePointCharStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.TokenStream;
 import org.apache.shardingsphere.spi.NewInstanceServiceLoader;
 import org.apache.shardingsphere.sql.parser.api.SQLParser;
 import org.apache.shardingsphere.sql.parser.spi.SQLParserEntry;
+import java.nio.CharBuffer;
 
 /**
  * SQL parser factory.
@@ -54,9 +56,11 @@ public final class SQLParserFactory {
         throw new UnsupportedOperationException(String.format("Cannot support database type '%s'", databaseTypeName));
     }
     
-    @SneakyThrows
+    @SneakyThrows(ReflectiveOperationException.class)
     private static SQLParser createSQLParser(final String sql, final SQLParserEntry parserEntry) {
-        Lexer lexer = parserEntry.getLexerClass().getConstructor(CharStream.class).newInstance(CharStreams.fromString(sql));
+        CodePointBuffer buffer = CodePointBuffer.withChars(CharBuffer.wrap(sql.toCharArray()));
+        CodePointCharStream codePointCharStream = CodePointCharStream.fromBuffer(buffer);
+        Lexer lexer = (Lexer) parserEntry.getLexerClass().getConstructor(CharStream.class).newInstance(codePointCharStream);
         return parserEntry.getParserClass().getConstructor(TokenStream.class).newInstance(new CommonTokenStream(lexer));
     }
 }
