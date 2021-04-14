@@ -820,6 +820,11 @@
                         <exclude>**/package-lock.json</exclude>
                         <!-- example files -->
                         <exclude>/examples/**</exclude>
+                        <!-- vscode files -->
+                        <exclude>**/.history/**</exclude>
+                        <exclude>**/.factorypath</exclude>
+                        <!-- g4 files -->
+                        <exclude>**/.antlr/**</exclude>
                     </excludes>
                 </configuration>
                 <executions>
